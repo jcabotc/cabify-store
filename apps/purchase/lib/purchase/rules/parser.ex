@@ -1,6 +1,8 @@
 defmodule Purchase.Rules.Parser do
   alias Purchase.{Product, Rules}
 
+  @raw_rules Application.get_env(:purchase, :rules, [])
+
   defmodule Promotion do
     @type config    :: Keyword.t
     @type product   :: Purchase.Product.t
@@ -22,7 +24,7 @@ defmodule Purchase.Rules.Parser do
                       promotions: [raw_promotion]]
 
   @spec parse!(raw_rules) :: Rules.t
-  def parse!(raw_rules) do
+  def parse!(raw_rules \\ @raw_rules) do
     products   = build_products(raw_rules)
     promotions = build_promotions(raw_rules, products)
 

@@ -13,6 +13,7 @@ defmodule Purchase.Rules do
   defstruct [:products, :products_by_id,
              :promotions]
 
+  defdelegate parse!(),       to: Rules.Parser
   defdelegate parse!(config), to: Rules.Parser
 
   @spec new([product], [promotion]) :: t
