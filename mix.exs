@@ -8,7 +8,7 @@ defmodule Store.Mixfile do
      consolidate_protocols: Mix.env != :test,
      deps: deps(),
      test_coverage: [tool: ExCoveralls],
-     preferred_cli_env: [coveralls: :test],
+     preferred_cli_env: [coveralls: :test, "coveralls.detail": :test],
      dialyzer: [ignore_warnings: "dialyzer.ignore"]]
   end
 
