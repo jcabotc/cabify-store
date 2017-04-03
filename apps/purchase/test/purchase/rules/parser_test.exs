@@ -20,7 +20,7 @@ defmodule Purchase.Rules.ParserTest do
     promotions: [
       {TestPromotion, [baz: "qux"]}]]
 
-  test "new/2" do
+  test "parse!/1" do
     product_1 = Product.new(:foo, name: "foo", price: 10.0)
     product_2 = Product.new(:bar, name: "bar", price: 15.0)
 

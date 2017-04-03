@@ -4,8 +4,7 @@ defmodule Purchase.Integration.NoPromotionsTest do
   @raw_rules [
     products: [
       foo: [name: "foo", price: 10.0],
-      bar: [name: "bar", price: 15.0]],
-    promotions: []]
+      bar: [name: "bar", price: 15.0]]]
 
   test "build a bill" do
     purchase = @raw_rules

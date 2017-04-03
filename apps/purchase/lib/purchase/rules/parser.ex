@@ -37,7 +37,7 @@ defmodule Purchase.Rules.Parser do
 
   defp build_promotions(raw_rules, products) do
     raw_rules
-    |> Keyword.fetch!(:promotions)
+    |> Keyword.get(:promotions, [])
     |> Enum.map(fn {mod, config} -> mod.parse(config, products) end)
   end
 end
