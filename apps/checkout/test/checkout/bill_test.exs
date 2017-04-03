@@ -26,5 +26,11 @@ defmodule Checkout.BillTest do
            |> Bill.apply(discount_1)
            |> Bill.apply(discount_1)
     assert bill.total == 11.0
+
+    expected_products = [product_1, product_2]
+    expected_discounts = [discount_1, discount_2, discount_1, discount_1]
+
+    assert expected_products  == Bill.products(bill)
+    assert expected_discounts == Bill.discounts(bill)
   end
 end

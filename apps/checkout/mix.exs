@@ -12,6 +12,7 @@ defmodule Checkout.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      consolidate_protocols: Mix.env != :test,
+     test_coverage: [tool: ExCoveralls],
      deps: deps()]
   end
 
