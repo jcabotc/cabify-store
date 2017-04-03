@@ -13,6 +13,8 @@ defmodule Checkout.Rules do
   defstruct [:products, :products_by_id,
              :promotions]
 
+  defdelegate parse!(config), to: Rules.Parser
+
   @spec new([product], [promotion]) :: t
   def new(products, promotions)
   when is_list(products) and is_list(promotions) do
