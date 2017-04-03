@@ -28,6 +28,6 @@ defmodule Purchase.Rules.ParserTest do
     promotion = %TestPromotion{config: [baz: "qux"], products: products}
 
     expected_rules = Rules.new(products, [promotion])
-    assert expected_rules == Rules.Parser.parse!(@raw_rules)
+    assert expected_rules == Rules.parse!(@raw_rules)
   end
 end

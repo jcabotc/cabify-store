@@ -13,8 +13,8 @@ defmodule Purchase.Rules do
   defstruct [:products, :products_by_id,
              :promotions]
 
-  defdelegate parse!(),       to: Rules.Parser
-  defdelegate parse!(config), to: Rules.Parser
+  @raw_rules Application.get_env(:purchase, :rules, [])
+  defdelegate parse!(raw_rules \\ @raw_rules), to: Rules.Parser
 
   @spec new([product], [promotion]) :: t
   def new(products, promotions)
