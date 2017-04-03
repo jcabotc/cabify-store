@@ -12,7 +12,7 @@ defmodule Scanner.Integration.ChallengeExamplesTest do
     assert :ok == Checkout.scan(checkout, "TSHIRT")
     assert :ok == Checkout.scan(checkout, "MUG")
 
-    assert 32.5 == Checkout.total(checkout)
+    assert 3250 == Checkout.total(checkout)
   end
 
   test "second example" do
@@ -22,7 +22,7 @@ defmodule Scanner.Integration.ChallengeExamplesTest do
     assert :ok == Checkout.scan(checkout, "TSHIRT")
     assert :ok == Checkout.scan(checkout, "VOUCHER")
 
-    assert 25.0 == Checkout.total(checkout)
+    assert 2500 == Checkout.total(checkout)
   end
 
   test "third example" do
@@ -34,7 +34,7 @@ defmodule Scanner.Integration.ChallengeExamplesTest do
     assert :ok == Checkout.scan(checkout, "VOUCHER")
     assert :ok == Checkout.scan(checkout, "TSHIRT")
 
-    assert 81.0 == Checkout.total(checkout)
+    assert 8100 == Checkout.total(checkout)
   end
 
   test "fourth example" do
@@ -48,6 +48,6 @@ defmodule Scanner.Integration.ChallengeExamplesTest do
     assert :ok == Checkout.scan(checkout, "TSHIRT")
     assert :ok == Checkout.scan(checkout, "TSHIRT")
 
-    assert 74.5 == Checkout.total(checkout)
+    assert 7450 == Checkout.total(checkout)
   end
 end

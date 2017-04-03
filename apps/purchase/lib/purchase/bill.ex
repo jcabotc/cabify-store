@@ -5,7 +5,7 @@ defmodule Purchase.Bill do
   @type basket   :: Basket.t
   @type product  :: Product.t
   @type discount :: Discount.t
-  @type total    :: number
+  @type total    :: integer
 
   @type t :: %__MODULE__{basket:    basket,
                          discounts: [discount],

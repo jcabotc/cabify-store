@@ -4,9 +4,9 @@ defmodule Purchase.DiscountTest do
   alias Purchase.Discount
 
   test "new/2" do
-    discount = Discount.new(name: "foo", amount: 10.0)
+    discount = Discount.new(name: "foo", amount: 1000)
 
     assert discount.name   == "foo"
-    assert discount.amount == 10.0
+    assert discount.amount == 1000
   end
 end

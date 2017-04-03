@@ -15,14 +15,14 @@ defmodule Purchase.Rules.ParserTest do
 
   @raw_rules [
     products: [
-      foo: [name: "foo", price: 10],
-      bar: [name: "bar", price: 15]],
+      foo: [name: "foo", price: 1000],
+      bar: [name: "bar", price: 1500]],
     promotions: [
       {TestPromotion, [baz: "qux"]}]]
 
   test "parse!/1" do
-    product_1 = Product.new(:foo, name: "foo", price: 10.0)
-    product_2 = Product.new(:bar, name: "bar", price: 15.0)
+    product_1 = Product.new(:foo, name: "foo", price: 1000)
+    product_2 = Product.new(:bar, name: "bar", price: 1500)
 
     products  = [product_1, product_2]
     promotion = %TestPromotion{config: [baz: "qux"], products: products}

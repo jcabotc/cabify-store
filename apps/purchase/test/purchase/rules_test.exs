@@ -4,8 +4,8 @@ defmodule Purchase.RulesTest do
   alias Purchase.{Product, Rules}
 
   test "new/2 and product/2" do
-    product_1 = Product.new(:foo, name: "foo", price: 10.0)
-    product_2 = Product.new(:bar, name: "bar", price: 15.0)
+    product_1 = Product.new(:foo, name: "foo", price: 1000)
+    product_2 = Product.new(:bar, name: "bar", price: 1500)
 
     products   = [product_1, product_2]
     promotions = [:fake_promotion]

@@ -2,7 +2,7 @@ defmodule Purchase.Discount do
   alias __MODULE__
 
   @type name   :: String.t
-  @type amount :: number
+  @type amount :: integer
 
   @type t :: %__MODULE__{name:   name,
                          amount: amount}

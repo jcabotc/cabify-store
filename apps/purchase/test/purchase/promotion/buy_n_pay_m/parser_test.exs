@@ -5,7 +5,7 @@ defmodule Purchase.Promotion.BuyNPayM.ParserTest do
 
   test "parse/2" do
     name           = "3x2 foo"
-    product        = Product.new(:foo, name: "foo", price: 10.0)
+    product        = Product.new(:foo, name: "foo", price: 1000)
     batch_size     = 3
     free_per_batch = 1
 

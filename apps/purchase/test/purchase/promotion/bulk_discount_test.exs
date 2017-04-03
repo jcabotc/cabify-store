@@ -5,21 +5,21 @@ defmodule Purchase.Promotion.BulkDiscountTest do
 
   test "new/4" do
     name      = "3+ foo discount"
-    product   = Product.new(:foo, name: "foo", price: 10.0)
-    promotion = Promotion.BulkDiscount.new(name, product, 3, 2.0)
+    product   = Product.new(:foo, name: "foo", price: 1000)
+    promotion = Promotion.BulkDiscount.new(name, product, 3, 200)
 
     assert promotion.name              == name
     assert promotion.product           == product
     assert promotion.quantity          == 3
-    assert promotion.discount_per_unit == 2.0
+    assert promotion.discount_per_unit == 200
   end
 
   describe "Purchase.Promotion implementation" do
     test "promotion not applicable" do
       name      = "3+ foo discount"
-      product   = Product.new(:foo, name: "foo", price: 10.0)
-      another   = Product.new(:bar, name: "bar", price: 15.0)
-      promotion = Promotion.BulkDiscount.new(name, product, 3, 2.0)
+      product   = Product.new(:foo, name: "foo", price: 1000)
+      another   = Product.new(:bar, name: "bar", price: 1500)
+      promotion = Promotion.BulkDiscount.new(name, product, 3, 200)
 
       bill = Basket.new
              |> Basket.add(product)
@@ -33,9 +33,9 @@ defmodule Purchase.Promotion.BulkDiscountTest do
 
     test "promotion applicable" do
       name      = "2+ foo discount"
-      product   = Product.new(:foo, name: "foo", price: 10.0)
-      another   = Product.new(:bar, name: "bar", price: 15.0)
-      promotion = Promotion.BulkDiscount.new(name, product, 2, 2.0)
+      product   = Product.new(:foo, name: "foo", price: 1000)
+      another   = Product.new(:bar, name: "bar", price: 1500)
+      promotion = Promotion.BulkDiscount.new(name, product, 2, 200)
 
       bill = Basket.new
              |> Basket.add(product)
@@ -47,7 +47,7 @@ defmodule Purchase.Promotion.BulkDiscountTest do
 
       new_bill = Promotion.apply(promotion, bill)
 
-      expected_discount = Discount.new(name: name, amount: 3 * 2.0)
+      expected_discount = Discount.new(name: name, amount: 3 * 200)
       assert new_bill.discounts == [expected_discount]
     end
   end

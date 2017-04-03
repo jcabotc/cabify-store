@@ -3,7 +3,7 @@ defmodule Purchase.Product do
 
   @type id    :: atom
   @type name  :: String.t
-  @type price :: number
+  @type price :: integer
 
   @type t :: %__MODULE__{id:    id,
                          name:  name,

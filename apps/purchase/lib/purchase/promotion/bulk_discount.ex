@@ -5,7 +5,7 @@ defmodule Purchase.Promotion.BulkDiscount do
   @type name              :: String.t
   @type product           :: Product.t
   @type quantity          :: non_neg_integer
-  @type discount_per_unit :: number
+  @type discount_per_unit :: integer
 
   @type t :: %__MODULE__{name:              name,
                          product:           product,
@@ -21,7 +21,7 @@ defmodule Purchase.Promotion.BulkDiscount do
   def new(name, %Product{} = product, quantity, discount_per_unit)
   when is_binary(name)
   and is_integer(quantity) and quantity >= 0
-  and is_number(discount_per_unit) do
+  and is_integer(discount_per_unit) do
     %BulkDiscount{name:              name,
                   product:           product,
                   quantity:          quantity,

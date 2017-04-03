@@ -4,7 +4,7 @@ defmodule Purchase.Promotion.BulkDiscount.Parser do
   @type name       :: String.t
   @type product_id :: Product.id
   @type quantity   :: pos_integer
-  @type bulk_price :: number
+  @type bulk_price :: integer
 
   @type config :: [name:       name,
                    product_id: product_id,

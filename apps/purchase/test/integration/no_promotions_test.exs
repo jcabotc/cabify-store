@@ -3,8 +3,8 @@ defmodule Purchase.Integration.NoPromotionsTest do
 
   @raw_rules [
     products: [
-      foo: [name: "foo", price: 10.0],
-      bar: [name: "bar", price: 15.0]]]
+      foo: [name: "foo", price: 1000],
+      bar: [name: "bar", price: 1500]]]
 
   test "build a bill" do
     purchase = @raw_rules
@@ -16,6 +16,6 @@ defmodule Purchase.Integration.NoPromotionsTest do
     assert {:ok, purchase} = Purchase.add(purchase, :bar)
 
     bill = Purchase.bill(purchase)
-    assert bill.total == 15.0 + 10.0 + 15.0
+    assert bill.total == 1500 + 1000 + 1500
   end
 end

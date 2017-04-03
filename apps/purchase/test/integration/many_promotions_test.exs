@@ -5,8 +5,8 @@ defmodule Purchase.Integration.ManyPromotionsTest do
 
   @raw_rules [
     products: [
-      foo: [name: "foo", price: 10.0],
-      bar: [name: "bar", price: 15.0]],
+      foo: [name: "foo", price: 1000],
+      bar: [name: "bar", price: 1500]],
     promotions: [
       {BuyNPayM, name:       "2x1 foo",
                  product_id: :foo,
@@ -15,7 +15,7 @@ defmodule Purchase.Integration.ManyPromotionsTest do
       {BulkDiscount, name:       "3+ bar discount",
                      product_id: :bar,
                      quantity:   3,
-                     bulk_price: 12.0}]]
+                     bulk_price: 1200}]]
 
   test "build a bill" do
     purchase = @raw_rules
@@ -33,6 +33,6 @@ defmodule Purchase.Integration.ManyPromotionsTest do
     assert {:ok, purchase} = Purchase.add(purchase, :bar)
 
     bill = Purchase.bill(purchase)
-    assert bill.total == (5 * 10.0) + (4 * 15.0) - (2 * 10.0) - (4 * 3.0)
+    assert bill.total == (5 * 1000) + (4 * 1500) - (2 * 1000) - (4 * 300)
   end
 end

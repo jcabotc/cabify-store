@@ -5,8 +5,8 @@ defmodule Scanner.CheckoutTest do
 
   @raw_rules [
     products: [
-      foo: [name: "foo", price: 10.0],
-      bar: [name: "bar", price: 15.0]],
+      foo: [name: "foo", price: 1000],
+      bar: [name: "bar", price: 1500]],
     promotions: []]
 
   test "scan/2 and total/1" do
@@ -25,7 +25,7 @@ defmodule Scanner.CheckoutTest do
     assert :ok = Checkout.scan(checkout, "FOO")
     assert :ok = Checkout.scan(checkout, "BAR")
 
-    assert 25.0 == Checkout.total(checkout)
+    assert 2500 == Checkout.total(checkout)
 
     ref = Process.monitor(checkout)
     Process.unlink(checkout)

@@ -17,12 +17,12 @@ defmodule PurchaseTest do
   end
 
   test "add/2 and bill/1" do
-    product_1 = Product.new(:foo, name: "foo", price: 10.0)
-    product_2 = Product.new(:bar, name: "bar", price: 15.0)
+    product_1 = Product.new(:foo, name: "foo", price: 1000)
+    product_2 = Product.new(:bar, name: "bar", price: 1500)
     products  = [product_1, product_2]
 
-    promotion_1 = %TestPromotion{discount_amount: 2.0}
-    promotion_2 = %TestPromotion{discount_amount: 4.0}
+    promotion_1 = %TestPromotion{discount_amount: 200}
+    promotion_2 = %TestPromotion{discount_amount: 400}
     promotions  = [promotion_1, promotion_2]
 
     rules    = Rules.new(products, promotions)
@@ -33,6 +33,6 @@ defmodule PurchaseTest do
     assert {:ok, purchase} = Purchase.add(purchase, :foo)
 
     bill = Purchase.bill(purchase)
-    assert bill.total == 15.0 + 15.0 + 10.0 - 2.0 - 4.0
+    assert bill.total == 1500 + 1500 + 1000 - 200 - 400
   end
 end

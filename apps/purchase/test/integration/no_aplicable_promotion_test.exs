@@ -5,8 +5,8 @@ defmodule Purchase.Integration.NoApplicablePromotionTest do
 
   @raw_rules [
     products: [
-      foo: [name: "foo", price: 10.0],
-      bar: [name: "bar", price: 15.0]],
+      foo: [name: "foo", price: 1000],
+      bar: [name: "bar", price: 1500]],
     promotions: [
       {BuyNPayM, name:       "3x2 foo",
                  product_id: :foo,
@@ -25,6 +25,6 @@ defmodule Purchase.Integration.NoApplicablePromotionTest do
     assert {:ok, purchase} = Purchase.add(purchase, :bar)
 
     bill = Purchase.bill(purchase)
-    assert bill.total == (2 * 10.0) + (3 * 15.0)
+    assert bill.total == (2 * 1000) + (3 * 1500)
   end
 end

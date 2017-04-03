@@ -5,7 +5,7 @@ defmodule Purchase.Promotion.BuyNPayMTest do
 
   test "new/4" do
     name      = "3x2 foo"
-    product   = Product.new(:foo, name: "foo", price: 10.0)
+    product   = Product.new(:foo, name: "foo", price: 1000)
     promotion = Promotion.BuyNPayM.new(name, product, 3, 1)
 
     assert promotion.name           == name
@@ -17,7 +17,7 @@ defmodule Purchase.Promotion.BuyNPayMTest do
   describe "Purchase.Promotion implementation" do
     test "promotion not applicable" do
       name      = "3x2 foo"
-      product   = Product.new(:foo, name: "foo", price: 10.0)
+      product   = Product.new(:foo, name: "foo", price: 1000)
       promotion = Promotion.BuyNPayM.new(name, product, 3, 1)
 
       bill = Basket.new
@@ -31,8 +31,8 @@ defmodule Purchase.Promotion.BuyNPayMTest do
 
     test "promotion applicable" do
       name      = "2x1 foo"
-      product   = Product.new(:foo, name: "foo", price: 10.0)
-      another   = Product.new(:bar, name: "bar", price: 15.0)
+      product   = Product.new(:foo, name: "foo", price: 1000)
+      another   = Product.new(:bar, name: "bar", price: 1500)
       promotion = Promotion.BuyNPayM.new(name, product, 2, 1)
 
       bill = Basket.new
@@ -46,7 +46,7 @@ defmodule Purchase.Promotion.BuyNPayMTest do
 
       new_bill = Promotion.apply(promotion, bill)
 
-      expected_discount = Discount.new(name: name, amount: 2 * 10)
+      expected_discount = Discount.new(name: name, amount: 2 * 1000)
       assert new_bill.discounts == [expected_discount]
     end
   end

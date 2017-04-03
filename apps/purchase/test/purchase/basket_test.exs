@@ -4,8 +4,8 @@ defmodule Purchase.BasketTest do
   alias Purchase.{Product, Basket}
 
   test "new/2" do
-    product_1 = Product.new(:foo, name: "foo", price: 10.0)
-    product_2 = Product.new(:bar, name: "bar", price: 15.0)
+    product_1 = Product.new(:foo, name: "foo", price: 1000)
+    product_2 = Product.new(:bar, name: "bar", price: 1500)
 
     basket = Basket.new
              |> Basket.add(product_1)
