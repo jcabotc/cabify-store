@@ -25,3 +25,31 @@ defmodule Checkout.Promotion.BuyNPayM do
               free_per_batch: free_per_batch}
   end
 end
+
+defimpl Checkout.Promotion, for: Checkout.Promotion.BuyNPayM do
+  alias Checkout.{Discount, Bill}
+
+  def apply(promotion, %Bill{} = bill) do
+    bill
+    |> Bill.products
+    |> free_units(promotion)
+    |> discount(bill, promotion)
+  end
+
+  defp free_units(products, %{product: target_product} = promotion) do
+    products
+    |> Enum.count(&(&1 == target_product))
+    |> Kernel.div(promotion.batch_size)
+    |> Kernel.*(promotion.free_per_batch)
+  end
+
+  defp discount(0, bill, _promotion) do
+    bill
+  end
+  defp discount(units, bill, %{name: name, product: product}) do
+    amount   = product.price * units
+    discount = Discount.new(name: name, amount: amount)
+
+    Bill.apply(bill, discount)
+  end
+end
