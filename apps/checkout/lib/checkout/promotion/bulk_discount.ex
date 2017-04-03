@@ -14,6 +14,9 @@ defmodule Checkout.Promotion.BulkDiscount do
 
   defstruct [:name, :product, :quantity, :discount_per_unit]
 
+  @behaviour Checkout.Rules.Parser.Promotion
+  defdelegate parse(config, products), to: BulkDiscount.Parser
+
   @spec new(name, product, quantity, discount_per_unit) :: t
   def new(name, %Product{} = product, quantity, discount_per_unit)
   when is_binary(name)
