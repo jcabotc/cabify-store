@@ -14,6 +14,9 @@ defmodule Checkout.Promotion.BuyNPayM do
 
   defstruct [:name, :product, :batch_size, :free_per_batch]
 
+  @behaviour Checkout.Rules.Parser.Promotion
+  defdelegate parse(config, products), to: BuyNPayM.Parser
+
   @spec new(name, product, batch_size, free_per_batch) :: t
   def new(name, %Product{} = product, batch_size, free_per_batch)
   when is_binary(name)
