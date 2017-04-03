@@ -21,6 +21,6 @@ defmodule Scanner.Mixfile do
   end
 
   defp deps do
-    []
+    [{:purchase, in_umbrella: true}]
   end
 end
