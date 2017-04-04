@@ -38,6 +38,12 @@ price.
 
 ## Internals
 
+The implementation of `Purchase` is purely funcional, as there are no
+side effects.
+
+(The only exception is the `Purchase.Rules.parse!/0` function that
+gets configuration from Mix.Config. More information on the Rules section)
+
 ### Product and Basket
 
 The `Purchase.Product` model represents a buyable product. It has 3 fields:
