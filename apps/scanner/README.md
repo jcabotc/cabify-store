@@ -99,3 +99,10 @@ with the same rules that are parsed in compilation time.
 # starts a checkout process with rules from configuration
 {:ok, checkout} = Scanner.Checkout.Supervisor.start_checkout()
 ```
+
+The supervisor is started with the application and given a name by default, that allows the example
+above to spawn a new child without passing its pid as argument.
+
+In the `Scanner.Application` module the rules are parsed in compilation
+time into a module attribute and given to the supervisor as argument when it
+starts.
