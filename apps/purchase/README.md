@@ -19,10 +19,11 @@ purchase = Purchase.new(rules)
 
 {:ok, purchase} = Purchase.add(purchase, :foo)
 {:ok, purchase} = Purchase.add(purchase, :foo)
+{:ok, purchase} = Purchase.add(purchase, :foo)
 {:ok, purchase} = Purchase.add(purchase, :bar)
 
 bill = Purchase.bill(purchase) # => %Purchase.Bill{...}
-bill.total                     # => 3000
+bill.total                     # => 4000
 ```
 
 In the example above we are declaring the following rules:
@@ -153,7 +154,7 @@ A protocol is a very simple and elegant way of achieving polymorphism in such
 situations.
 
 Adding a new promotion does not require any modification of the existing code,
-it only requires the definition of a new modul that implements the protocol.
+it only requires the definition of a new module that implements the protocol.
 
 ```elixir
 defmodule UnconditionalDiscount do
@@ -364,7 +365,7 @@ rules_1 == rules_2 # => true
 
 ### Purchase
 
-The final piece of the application is the `Purchase` module. It represent a purchasing
+The final piece of the application is the `Purchase` module. It represents a purchasing
 process:
 
 ```elixir
@@ -387,8 +388,8 @@ then we add 3 products to the purchase using its ids.
 After that the bill is generated.
 
 The reason the `add/2` function returns `{:ok, purchase}` or `{:error, reason}` is that
-is most cases, during the purchases process, it is necessary to known inmediately whether
-addition of the product has succeeded.
+is most cases, during the purchasing process, it is necessary to known inmediately whether
+the addition of a product succeeded.
 For instance, in a physical shop, when a product cannot be scanned it has to be notified
 inmediately without crashing to allow the shop assistant to solve the problem and retry or
 remove that product and continue with the rest of the products.
