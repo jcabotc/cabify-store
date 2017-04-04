@@ -34,7 +34,7 @@ what products the customer took (like the one Amazon just launched), the `Purcha
 
 The `Scanner` application depends on `Purchase`. It acts as an interface between the code scanner and the purchasing process.
 
-### Examples in the code challenge
+## Examples in the code challenge
 
 The configuration of the `Scanner` application (for all environments) at `apps/scanner/config/config.exs` is
 the same as the one in the code challenge.
