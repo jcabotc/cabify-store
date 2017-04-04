@@ -68,16 +68,17 @@ of the arguments.
 A `Purchase.Basket` represents a collection of products.
 
 ```elixir
-alias Purchase.Basket
+alias Purchase.{Product, Basket}
+
+product_1 = Product.new(:foo, name: "Foo", price: 1000)
+product_2 = Product.new(:bar, name: "Bar", price: 2000)
 
 basket = Basket.new
-         |> Basket.add(:foo)
-         |> Basket.add(:bar)
-         |> Basket.add(:bar)
+         |> Basket.add(product_1)
+         |> Basket.add(product_2)
+         |> Basket.add(product_2)
 
-Basket.products(basket) # => [%Purchase.Product{id: :foo, ...},
-                        #     %Purchase.Product{id: :bar, ...},
-                        #     %Purchase.Product{id: :bar, ...}]
+Basket.products(basket) # => [product_1, product_2, product_2]
 ```
 
 Pattern match may be used to get the products from a basket,
