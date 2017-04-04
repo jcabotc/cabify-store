@@ -30,8 +30,8 @@ In the example above we are declaring the following rules:
   * There are 2 products: Foo and Bar
   * Buying 3 Foos you only pay for 2 of them
 
-Using that rules we start a new purchasing process, and we add
-3 products: 2 foo and 1 bar.
+Using those rules we start a new purchase process, and we add 3
+products: 2 foos and 1 bar
 
 Then we generate a bill for that process that contains the total
 price.

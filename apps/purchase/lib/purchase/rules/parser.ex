@@ -17,8 +17,8 @@ defmodule Purchase.Rules.Parser do
     @callback parse(config, [product]) :: promotion
   end
 
-  @type product_id         :: product.id
-  @type product_attributes :: product.attributes
+  @type product_id         :: Product.id
+  @type product_attributes :: Product.attributes
 
   @type promotion_mod    :: module
   @type promotion_config :: Rules.Parser.Promotion.config

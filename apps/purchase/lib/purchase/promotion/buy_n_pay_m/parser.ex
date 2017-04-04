@@ -6,16 +6,16 @@ defmodule Purchase.Promotion.BuyNPayM.Parser do
 
   alias Purchase.{Product, Promotion.BuyNPayM}
 
-  @doc "A human-readable description of the discount"
+  @typedoc "A human-readable description of the discount"
   @type name :: String.t
 
-  @doc "The id of the product to apply the discount to"
+  @typedoc "The id of the product to apply the discount to"
   @type product_id :: Product.id
 
-  @doc "The size of the batch"
+  @typedoc "The size of the batch"
   @type buy :: pos_integer
 
-  @doc "The number of items the customer has to pay per batch"
+  @typedoc "The number of items the customer has to pay per batch"
   @type pay :: non_neg_integer
 
   @type config :: [name:       name,

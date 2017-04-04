@@ -1,5 +1,23 @@
 defmodule Purchase.Rules do
-  @moduledoc "It represents the rules to apply to the purchasing process"
+  @moduledoc """
+  It represents the rules to apply to the purchasing process
+
+  To simplify the process of building the rules a parse!/1 function is
+  provided to parse configuration into a `Purchase.Rules` struct:
+
+  ```elixir
+  alias Purchase.Promotion.BuyNPayM
+
+  config = [
+    products: [
+      foo: [name: "Foo", price: 1000],
+      bar: [name: "Bar", price: 2000]],
+    promotions: [
+      {BuyNPayM, name: "2 for 1 foo", product_id: :foo, buy: 2, pay: 1}]]
+
+  rules = Purchase.Rules.parse!(config)
+  ```
+  """
 
   alias __MODULE__
   alias Purchase.{Product, Promotion}

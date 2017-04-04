@@ -8,16 +8,16 @@ defmodule Purchase.Promotion.BulkDiscount do
   alias __MODULE__
   alias Purchase.Product
 
-  @doc "A human-readable description of the discount"
+  @typedoc "A human-readable description of the discount"
   @type name :: String.t
 
-  @doc "The product to apply the discount to"
+  @typedoc "The product to apply the discount to"
   @type product :: Product.t
 
-  @doc "The minimum quantity of units to apply the discount"
+  @typedoc "The minimum quantity of units to apply the discount"
   @type quantity :: non_neg_integer
 
-  @doc "The discount per unit"
+  @typedoc "The discount per unit"
   @type discount_per_unit :: integer
 
   @type t :: %__MODULE__{name:              name,

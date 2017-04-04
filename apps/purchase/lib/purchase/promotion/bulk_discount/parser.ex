@@ -6,16 +6,16 @@ defmodule Purchase.Promotion.BulkDiscount.Parser do
 
   alias Purchase.{Product, Promotion.BulkDiscount}
 
-  @doc "A human-readable description of the discount"
+  @typedoc "A human-readable description of the discount"
   @type name :: String.t
 
-  @doc "The id of the product to apply the discount to"
+  @typedoc "The id of the product to apply the discount to"
   @type product_id :: Product.id
 
-  @doc "The minimum quantity of units to apply the discount"
+  @typedoc "The minimum quantity of units to apply the discount"
   @type quantity :: pos_integer
 
-  @doc "The price of the product when the discount applies"
+  @typedoc "The price of the product when the discount applies"
   @type bulk_price :: integer
 
   @type config :: [name:       name,

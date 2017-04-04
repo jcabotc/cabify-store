@@ -8,16 +8,16 @@ defmodule Purchase.Promotion.BuyNPayM do
   alias __MODULE__
   alias Purchase.Product
 
-  @doc "A human-readable description of the discount"
+  @typedoc "A human-readable description of the discount"
   @type name :: String.t
 
-  @doc "The product to apply the discount to"
+  @typedoc "The product to apply the discount to"
   @type product :: Product.t
 
-  @doc "The size of the batch (N)"
+  @typedoc "The size of the batch (N)"
   @type batch_size :: pos_integer
 
-  @doc "The number of free units per batch (N - M)"
+  @typedoc "The number of free units per batch (N - M)"
   @type free_per_batch :: non_neg_integer
 
   @type t :: %__MODULE__{name:           name,
