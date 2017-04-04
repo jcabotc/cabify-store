@@ -4,7 +4,7 @@ defmodule Purchase.Basket do
 
   @type product :: Product.t
 
-  @type t :: %__MODULE__{products:  [product]}
+  @type t :: %__MODULE__{products: [product]}
 
   defstruct products: []
 
