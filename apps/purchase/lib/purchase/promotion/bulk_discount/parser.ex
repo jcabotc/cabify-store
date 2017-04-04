@@ -1,9 +1,21 @@
 defmodule Purchase.Promotion.BulkDiscount.Parser do
+  @moduledoc """
+  Module that parses the BulkDiscount configuration
+  into a BulkDiscount struct
+  """
+
   alias Purchase.{Product, Promotion.BulkDiscount}
 
-  @type name       :: String.t
+  @doc "A human-readable description of the discount"
+  @type name :: String.t
+
+  @doc "The id of the product to apply the discount to"
   @type product_id :: Product.id
-  @type quantity   :: pos_integer
+
+  @doc "The minimum quantity of units to apply the discount"
+  @type quantity :: pos_integer
+
+  @doc "The price of the product when the discount applies"
   @type bulk_price :: integer
 
   @type config :: [name:       name,

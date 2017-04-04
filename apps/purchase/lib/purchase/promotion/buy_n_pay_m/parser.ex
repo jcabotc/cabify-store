@@ -1,10 +1,22 @@
 defmodule Purchase.Promotion.BuyNPayM.Parser do
+  @moduledoc """
+  Module that parses the BuyNPayM configuration
+  into a BuyNPayM struct
+  """
+
   alias Purchase.{Product, Promotion.BuyNPayM}
 
-  @type name       :: String.t
+  @doc "A human-readable description of the discount"
+  @type name :: String.t
+
+  @doc "The id of the product to apply the discount to"
   @type product_id :: Product.id
-  @type buy        :: pos_integer
-  @type pay        :: non_neg_integer
+
+  @doc "The size of the batch"
+  @type buy :: pos_integer
+
+  @doc "The number of items the customer has to pay per batch"
+  @type pay :: non_neg_integer
 
   @type config :: [name:       name,
                    product_id: product_id,

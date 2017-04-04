@@ -1,4 +1,6 @@
 defmodule Purchase.Basket do
+  @moduledoc "A model that represents a collection of products to be purchased"
+
   alias __MODULE__
   alias Purchase.Product
 
@@ -18,6 +20,7 @@ defmodule Purchase.Basket do
     %{basket | products: [product | products]}
   end
 
+  @doc "All products in the order they were added"
   @spec products(t) :: [product]
   def products(%Basket{products: products}) do
     Enum.reverse(products)

@@ -1,10 +1,23 @@
 defmodule Purchase.Promotion.BulkDiscount do
+  @moduledoc """
+  A promotion that, if there are more than N units of the same
+  product in the basket, applies a discount so that every unit
+  of that product is cheaper.
+  """
+
   alias __MODULE__
   alias Purchase.Product
 
-  @type name              :: String.t
-  @type product           :: Product.t
-  @type quantity          :: non_neg_integer
+  @doc "A human-readable description of the discount"
+  @type name :: String.t
+
+  @doc "The product to apply the discount to"
+  @type product :: Product.t
+
+  @doc "The minimum quantity of units to apply the discount"
+  @type quantity :: non_neg_integer
+
+  @doc "The discount per unit"
   @type discount_per_unit :: integer
 
   @type t :: %__MODULE__{name:              name,

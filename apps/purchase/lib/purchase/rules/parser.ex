@@ -1,16 +1,24 @@
 defmodule Purchase.Rules.Parser do
+  @moduledoc "This module parses configuration into a `Purchase.Rules` struct"
+
   alias Purchase.{Product, Rules}
 
   defmodule Promotion do
+    @moduledoc """
+    This behaviour is meant to be implemented by all promotions
+    that need to be parsed from configuration.
+    """
+
     @type config    :: Keyword.t
     @type product   :: Purchase.Product.t
     @type promotion :: Purchase.Promotion.t
 
+    @doc "Build a promotion form its configuration and the list of available products"
     @callback parse(config, [product]) :: promotion
   end
 
-  @type product_id         :: Product.id
-  @type product_attributes :: Product.attributes
+  @type product_id         :: product.id
+  @type product_attributes :: product.attributes
 
   @type promotion_mod    :: module
   @type promotion_config :: Rules.Parser.Promotion.config

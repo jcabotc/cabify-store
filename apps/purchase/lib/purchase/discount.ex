@@ -1,7 +1,12 @@
 defmodule Purchase.Discount do
+  @moduledoc "A model that represents a discount"
+
   alias __MODULE__
 
-  @type name   :: String.t
+  @typedoc "Human-readable description"
+  @type name :: String.t
+
+  @typedoc "Amount to subtract in cents"
   @type amount :: integer
 
   @type t :: %__MODULE__{name:   name,

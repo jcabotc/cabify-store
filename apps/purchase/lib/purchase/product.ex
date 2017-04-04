@@ -1,8 +1,15 @@
 defmodule Purchase.Product do
+  @moduledoc "A model that represents a purchaseable product"
+
   alias __MODULE__
 
-  @type id    :: atom
-  @type name  :: String.t
+  @typedoc "Unique identifier"
+  @type id :: atom
+
+  @typedoc "Human-readable name"
+  @type name :: String.t
+
+  @typedoc "Price in cents"
   @type price :: integer
 
   @type t :: %__MODULE__{id:    id,
