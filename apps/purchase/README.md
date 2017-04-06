@@ -19,10 +19,11 @@ purchase = Purchase.new(rules)
 
 {:ok, purchase} = Purchase.add(purchase, :foo)
 {:ok, purchase} = Purchase.add(purchase, :foo)
+{:ok, purchase} = Purchase.add(purchase, :foo)
 {:ok, purchase} = Purchase.add(purchase, :bar)
 
 bill = Purchase.bill(purchase) # => %Purchase.Bill{...}
-bill.total                     # => 3000
+bill.total                     # => 4000
 ```
 
 In the example above we are declaring the following rules:
@@ -30,8 +31,8 @@ In the example above we are declaring the following rules:
   * There are 2 products: Foo and Bar
   * Buying 3 Foos you only pay for 2 of them
 
-Using those rules we start a new purchase process, and we add 3
-products: 2 foos and 1 bar
+Using those rules we start a new purchase process, and we add 4
+products: 3 foos and 1 bar
 
 Then we generate a bill for that process that contains the total
 price.
@@ -42,7 +43,7 @@ The implementation of `Purchase` is purely funcional, as there are no
 side effects.
 
 (The only exception is the `Purchase.Rules.parse!/0` function that
-gets configuration from Mix.Config. More information on the Rules section)
+gets configuration from `Mix.Config`. More information on the Rules section)
 
 ### Product and Basket
 
@@ -81,7 +82,7 @@ basket = Basket.new
 Basket.products(basket) # => [product_1, product_2, product_2]
 ```
 
-Pattern match may be used to get the products from a basket,
+Pattern matching may be used to get the products from a basket,
 but `products/1` returns the products in the same order they were
 introduced (this may be useful for presentational use cases like
 printing a bill).
@@ -153,7 +154,7 @@ A protocol is a very simple and elegant way of achieving polymorphism in such
 situations.
 
 Adding a new promotion does not require any modification of the existing code,
-it only requires the definition of a new modul that implements the protocol.
+it only requires the definition of a new module that implements the protocol.
 
 ```elixir
 defmodule UnconditionalDiscount do
@@ -364,7 +365,7 @@ rules_1 == rules_2 # => true
 
 ### Purchase
 
-The final piece of the application is the `Purchase` module. It represent a purchasing
+The final piece of the application is the `Purchase` module. It represents a purchasing
 process:
 
 ```elixir
@@ -387,8 +388,8 @@ then we add 3 products to the purchase using its ids.
 After that the bill is generated.
 
 The reason the `add/2` function returns `{:ok, purchase}` or `{:error, reason}` is that
-is most cases, during the purchases process, it is necessary to known inmediately whether
-addition of the product has succeeded.
+is most cases, during the purchasing process, it is necessary to known inmediately whether
+the addition of a product succeeded.
 For instance, in a physical shop, when a product cannot be scanned it has to be notified
 inmediately without crashing to allow the shop assistant to solve the problem and retry or
 remove that product and continue with the rest of the products.
