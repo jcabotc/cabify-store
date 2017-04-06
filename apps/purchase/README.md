@@ -31,8 +31,8 @@ In the example above we are declaring the following rules:
   * There are 2 products: Foo and Bar
   * Buying 3 Foos you only pay for 2 of them
 
-Using those rules we start a new purchase process, and we add 3
-products: 2 foos and 1 bar
+Using those rules we start a new purchase process, and we add 4
+products: 3 foos and 1 bar
 
 Then we generate a bill for that process that contains the total
 price.
@@ -43,7 +43,7 @@ The implementation of `Purchase` is purely funcional, as there are no
 side effects.
 
 (The only exception is the `Purchase.Rules.parse!/0` function that
-gets configuration from Mix.Config. More information on the Rules section)
+gets configuration from `Mix.Config`. More information on the Rules section)
 
 ### Product and Basket
 
@@ -82,7 +82,7 @@ basket = Basket.new
 Basket.products(basket) # => [product_1, product_2, product_2]
 ```
 
-Pattern match may be used to get the products from a basket,
+Pattern matching may be used to get the products from a basket,
 but `products/1` returns the products in the same order they were
 introduced (this may be useful for presentational use cases like
 printing a bill).
